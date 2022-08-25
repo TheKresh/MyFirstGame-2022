@@ -1,41 +1,42 @@
 using UnityEngine;
 
-// lehet ugrani es mozog jobbra-balra, de tul lassan zuhan
-
 public class BallMover : MonoBehaviour
 {
     [SerializeField] KeyCode rightKey;
     [SerializeField] KeyCode leftKey;
     [SerializeField] KeyCode jumpKey;
     [Space]
-    [SerializeField] float speed = 1;
+    [SerializeField] float moveSpeed = 10;
     [SerializeField] Rigidbody rigidBody;
 
-    [SerializeField] float acceleration = 9.81f;
-    [SerializeField] float jumpVelocity = 1;
-    float jumpSpeed = 0;
+    [SerializeField] float verticalVelocity;
+    [SerializeField] float gravityForce = 20;
+    [SerializeField] float jumpForce = 10;
 
+    float speed = 1;
     void OnValidate()
     {
         if (rigidBody == null)
             rigidBody = GetComponent<Rigidbody>();
     }
-
-    void FixedUpdate()
-    {
-        jumpSpeed -= acceleration * Time.fixedDeltaTime;
-    }
+    
     void Update()
     {
         Vector3 velocity = GetInputVector();
 
-        rigidBody.velocity = velocity.normalized * speed;
+        rigidBody.velocity = velocity.normalized * moveSpeed;
 
+        // verticalVelocity = (-gravityForce * Time.deltaTime) / 2;  // ha a padlon van, akkor is hat ra a gravitacio
+       
         if (Input.GetKeyDown(jumpKey))
         {
-            jumpSpeed += jumpVelocity;
-            transform.position += new Vector3(0, jumpSpeed * Time.deltaTime, 0);
+            verticalVelocity = jumpForce;
         }
+        else
+        {
+            verticalVelocity -= gravityForce * Time.deltaTime;
+        }
+        Vector3 moveVector = new Vector3(0, verticalVelocity * Time.deltaTime, 0);
     }
     Vector3 GetInputVector()
     {
