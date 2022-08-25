@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+// lehet ugrani es mozog jobbra-balra, de tul lassan zuhan
 
 public class BallMover : MonoBehaviour
 {
@@ -8,24 +8,39 @@ public class BallMover : MonoBehaviour
     [SerializeField] KeyCode leftKey;
     [SerializeField] KeyCode jumpKey;
     [Space]
+    [SerializeField] float speed = 1;
+    [SerializeField] Rigidbody rigidBody;
+
     [SerializeField] float acceleration = 9.81f;
     [SerializeField] float jumpVelocity = 1;
+    float jumpSpeed = 0;
 
-    float speed = 0;
+    void OnValidate()
+    {
+        if (rigidBody == null)
+            rigidBody = GetComponent<Rigidbody>();
+    }
 
     void FixedUpdate()
     {
-        speed -= acceleration * Time.fixedDeltaTime;
+        jumpSpeed -= acceleration * Time.fixedDeltaTime;
     }
     void Update()
     {
+        Vector3 velocity = GetInputVector();
 
+        rigidBody.velocity = velocity.normalized * speed;
+
+        if (Input.GetKeyDown(jumpKey))
+        {
+            jumpSpeed += jumpVelocity;
+            transform.position += new Vector3(0, jumpSpeed * Time.deltaTime, 0);
+        }
     }
     Vector3 GetInputVector()
     {
         bool right = Input.GetKey(rightKey);
         bool left = Input.GetKey(leftKey);
-        bool jump = Input.GetKey(jumpKey);
 
         float x = ToAxis(right, left);
 
@@ -37,17 +52,11 @@ public class BallMover : MonoBehaviour
     {
         float value;
         if (positive)
-        {
             value = 1;
-        }
         else if (negative)
-        {
             value = -1;
-        }
         else
-        {
             value = 0;
-        }
         return value;
     }
 }
