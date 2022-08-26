@@ -6,14 +6,10 @@ public class BallMover : MonoBehaviour
     [SerializeField] KeyCode leftKey;
     [SerializeField] KeyCode jumpKey;
     [Space]
-    [SerializeField] float moveSpeed = 10;
     [SerializeField] Rigidbody rigidBody;
-
-    [SerializeField] float verticalVelocity;
-    [SerializeField] float gravityForce = 20;
+    [Space]
+    [SerializeField] float moveSpeed = 10;
     [SerializeField] float jumpForce = 10;
-
-    float speed = 1;
     void OnValidate()
     {
         if (rigidBody == null)
@@ -26,17 +22,10 @@ public class BallMover : MonoBehaviour
 
         rigidBody.velocity = velocity.normalized * moveSpeed;
 
-        // verticalVelocity = (-gravityForce * Time.deltaTime) / 2;  // ha a padlon van, akkor is hat ra a gravitacio
-       
         if (Input.GetKeyDown(jumpKey))
         {
-            verticalVelocity = jumpForce;
+            transform.position += new Vector3(0,jumpForce * Time.deltaTime, 0);
         }
-        else
-        {
-            verticalVelocity -= gravityForce * Time.deltaTime;
-        }
-        Vector3 moveVector = new Vector3(0, verticalVelocity * Time.deltaTime, 0);
     }
     Vector3 GetInputVector()
     {
