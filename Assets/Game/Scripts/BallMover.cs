@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Nem mukodik rendesen
+
 public class BallMover : MonoBehaviour
 {
     [SerializeField] KeyCode rightKey;
@@ -27,6 +29,7 @@ public class BallMover : MonoBehaviour
             transform.position += new Vector3(0,jumpForce * Time.deltaTime, 0);
         }
     }
+
     Vector3 GetInputVector()
     {
         bool right = Input.GetKey(rightKey);
