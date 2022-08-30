@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-// Ha a Player erintkezik azzal az objet colliderevel amire ezt a scriptet rarakom, akkor teleportaljon a B-nek beallitott obj. poziciojahoz
+// Ha a Player erintkezik azzal az objet colliderevel amire ezt a scriptet rarakom es lenyomom a beallitott gombot, akkor teleportaljon a B-nek beallitott obj. poziciojahoz
 
 public class PortalTeleport : MonoBehaviour
 {
+    [SerializeField] KeyCode teleportButton;
     [SerializeField] GameObject player;
     [SerializeField] Transform finishpoint;
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player" && Input.GetKey(teleportButton))
         {
             StartCoroutine("Teleport");
         }
