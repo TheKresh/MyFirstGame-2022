@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-// Akarhol is legyek akarmelyik mappon, ha lenyomtam az adott beallitott gombot, (egyelore meg csak) az adott beallitott pontra respawnol
+// Akarhol is legyek akarmelyik mappon, ha lenyomtam az adott beallitott gombot, (egyelore meg csak) az adott beallitott pontra visszateleportal
+// game breaking bug hasznos lehet
 
 public class Respawner : MonoBehaviour
 {

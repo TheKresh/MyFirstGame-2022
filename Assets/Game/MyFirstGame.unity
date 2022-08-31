@@ -2288,10 +2288,10 @@ GameObject:
   - component: {fileID: 1898324834}
   - component: {fileID: 1898324840}
   - component: {fileID: 1898324838}
-  - component: {fileID: 1898324839}
   - component: {fileID: 1898324841}
+  - component: {fileID: 1898324842}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_Ball
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2383,7 +2383,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898324832}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2391,23 +2391,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1898324839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1898324832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f680dd82ae9a283499c7956b78c2a13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  jumpForce: 70
-  isJumping: 0
-  rigidBody: {fileID: 1898324838}
-  moveHorizontal: 1
 --- !u!135 &1898324840
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2435,6 +2418,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnButton: 114
   respawnPoint: {fileID: 1027299108}
+--- !u!114 &1898324842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898324832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b917d61cab506443935aa5f1c8bf061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightKey: 100
+  leftKey: 97
+  jumpKey: 32
+  moveSpeed: 2
+  jumpForce: 60
+  rigidBody: {fileID: 1898324838}
 --- !u!1 &1934718366
 GameObject:
   m_ObjectHideFlags: 0
