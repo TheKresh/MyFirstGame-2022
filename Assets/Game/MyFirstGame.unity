@@ -1150,9 +1150,6 @@ MonoBehaviour:
   teleportButton: 116
   player: {fileID: 1898324832}
   finishPoint: {fileID: 828055514}
-  cam: {fileID: 1831876421}
-  cameraPos: {fileID: 1817967579}
-  cameraRotationSpeed: 100
 --- !u!1 &828055510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1163,7 @@ GameObject:
   - component: {fileID: 828055512}
   - component: {fileID: 828055511}
   - component: {fileID: 828055515}
+  - component: {fileID: 828055516}
   m_Layer: 0
   m_Name: FinishPortalMap1
   m_TagString: Untagged
@@ -1266,9 +1264,21 @@ MonoBehaviour:
   teleportButton: 116
   player: {fileID: 1898324832}
   finishPoint: {fileID: 740321206}
+--- !u!114 &828055516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828055510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252b50c60f0c6b8439bc2d3c58ea9136, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   cam: {fileID: 1831876421}
   cameraPos: {fileID: 2040285037}
-  cameraRotationSpeed: 100
+  speed: 45
 --- !u!1 &996277462
 GameObject:
   m_ObjectHideFlags: 0
