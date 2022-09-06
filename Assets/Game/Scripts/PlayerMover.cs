@@ -7,7 +7,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [Space]
     [SerializeField] float moveSpeed = 2f;
-    [SerializeField] float jumpForce = 60f;     // 20-as Mass mellett
+    [SerializeField] float jumpForce = 60f;     
     [Space]
     [SerializeField] Rigidbody rigidBody;
 
@@ -22,6 +22,7 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKey(rightKey))
         {
             button = "right";

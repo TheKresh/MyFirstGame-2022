@@ -10,7 +10,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] Transform finishPoint;
     [Space]
-    [SerializeField] Camera cam;
+    [SerializeField] Transform cam;
     [SerializeField] GameObject cameraPos;
     [SerializeField] float cameraRotationSpeed;
 
@@ -22,8 +22,6 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        player.transform.right = cam.transform.right;
-
         if (cameraPos.active == true)
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraRotationSpeed * Time.fixedDeltaTime);
