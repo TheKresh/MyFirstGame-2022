@@ -44,9 +44,11 @@ public class PlayerMover : MonoBehaviour
         else
             button = null;
     }
-
+    // valahogy megoldani hogy ne azonnal megalljon, hanem csak drasztikusan elkezdjen lelassulni
     void FixedUpdate()
     {
+        rigidBody.freezeRotation = false;
+
         if (button == "right")
             rigidBody.AddForce (new Vector3(moveSpeed, 0f, 0f), ForceMode.Impulse);
         
@@ -57,7 +59,7 @@ public class PlayerMover : MonoBehaviour
             rigidBody.AddForce (new Vector3(0f, jumpForce, 0f), ForceMode.Impulse);
         
         else
-            rigidBody.AddForce(new Vector3(0f, 0f, 0f), ForceMode.VelocityChange);
+            rigidBody.freezeRotation = true;
     }
 
     void OnTriggerEnter(Collider collision)

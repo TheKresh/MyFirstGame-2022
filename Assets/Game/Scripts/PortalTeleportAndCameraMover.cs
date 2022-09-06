@@ -11,21 +11,24 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] Transform finishPoint;
     [Space]
     [SerializeField] Camera cam;
-    [SerializeField] Transform cameraPos;
+    [SerializeField] GameObject cameraPos;
     [SerializeField] float cameraRotationSpeed;
 
-    void OnValidate()
+    void Start()
     {
-        if (cam == null)
-            cam = GetComponent<Camera>();
+        cameraPos.SetActive(false);
     }
 
-    // Megcsinálni, hogy ha lenyomtam a teleport gombot/player collidere elhagyta az adott collidert akkor kapcsolja be a cameraPos transformot
-    // Csak akkor forogjon el a kamera ha bevan kapcsolva a cameraPos transform
+
     void FixedUpdate()
     {
-        cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraRotationSpeed * Time.fixedDeltaTime);
-        cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
+        player.transform.right = cam.transform.right;
+
+        if (cameraPos.active == true)
+        {
+            cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraRotationSpeed * Time.fixedDeltaTime);
+            cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
+        }
     }
 
     void OnTriggerStay(Collider col)
@@ -41,11 +44,23 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     {
         player.isStatic = true;
         yield return new WaitForSeconds(0.1f);
+        cameraPos.SetActive(true);
+        yield return new WaitUntil(camPositionReached);
+        cameraPos.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
         player.transform.position = new Vector3(
             finishPoint.transform.position.x,
             finishPoint.transform.position.y,
             finishPoint.transform.position.z);
         yield return new WaitForSeconds(0.1f);
         player.isStatic = false;
+    }
+
+    bool camPositionReached()
+    {
+        if (cam.transform.position == cameraPos.transform.position && cam.transform.rotation == cameraPos.transform.localRotation)
+            return true;
+        else
+            return false;
     }
 }
