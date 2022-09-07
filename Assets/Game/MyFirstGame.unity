@@ -1275,7 +1275,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-104448
+  m_Name: pb_Mesh-1242
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1753,6 +1753,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1258642408}
+  - {fileID: 1777397063}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2179,6 +2180,11 @@ Transform:
   m_Father: {fileID: 424424612}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1777397063 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+  m_PrefabInstance: {fileID: 5553427087241487641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791270558
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2922,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061818014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &5553427087241487641
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1108416175}
+    m_Modifications:
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.726
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503966, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5553427087911503967, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
+      propertyPath: m_Name
+      value: Cannon
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 858940b65e352b44ca8f8155f7798d6e, type: 3}
 --- !u!1001 &8965603700977583672
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2933,7 +2996,7 @@ PrefabInstance:
       objectReference: {fileID: 995713321}
     - target: {fileID: 6601684666231587155, guid: f29ecee80d401444db14fe1e61d7404a, type: 3}
       propertyPath: m_VersionIndex
-      value: 5047
+      value: 5059
       objectReference: {fileID: 0}
     - target: {fileID: 8965603700055154128, guid: f29ecee80d401444db14fe1e61d7404a, type: 3}
       propertyPath: m_RootOrder
