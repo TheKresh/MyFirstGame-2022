@@ -1,28 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CannonShooter : MonoBehaviour
 {
-    [SerializeField] KeyCode shoot;
-
     [SerializeField] Transform startPos;
     [SerializeField] GameObject bullet;
-    [SerializeField] float speed = 1;
+    [SerializeField] float starttimebetween;
+    
+    float timebetween;
 
-    // bool isExist;
-
-    void FixedUpdate()
+    void Start()
     {
-        if (Input.GetKey(shoot))
+        timebetween = starttimebetween;
+    }
+
+    void Update()
+    {
+        if (timebetween <= 0)
         {
-            GameObject newBullet = Instantiate(bullet); // kodbol GameObjectet hozunk letre
-
+            GameObject newBullet = Instantiate(bullet);
             newBullet.transform.position = startPos.position;
-
-            Rigidbody rigidBody = newBullet.GetComponent<Rigidbody>();
-
-            rigidBody.AddForce(new Vector3(-speed, 0, 0), ForceMode.Force);
+            timebetween = starttimebetween;
         }
+        else
+            timebetween -= Time.deltaTime;
     }
 }

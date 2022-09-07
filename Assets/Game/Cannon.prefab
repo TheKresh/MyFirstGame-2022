@@ -663,10 +663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071676562fa52eb4698ea9a972fada1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoot: 323
   startPos: {fileID: 8335384071203224625}
   bullet: {fileID: 8992140915067556911, guid: f29ecee80d401444db14fe1e61d7404a, type: 3}
-  speed: 10
+  starttimebetween: 3
 --- !u!1 &5553427088230274584
 GameObject:
   m_ObjectHideFlags: 0
