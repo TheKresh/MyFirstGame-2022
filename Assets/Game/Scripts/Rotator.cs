@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class PortalRotator : MonoBehaviour
+// Forgatja az adott GameObjectet amire rarakjuk 
+
+public class Rotator : MonoBehaviour
 {
     [SerializeField] float rotateSpeed;
 

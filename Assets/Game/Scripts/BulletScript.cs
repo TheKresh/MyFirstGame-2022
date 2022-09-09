@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Mozgatja a lovedeket, majd beallitott ido mulva megsemmisiti a lovedeket
+
 public class BulletScript : MonoBehaviour
 {
     [SerializeField] float speed;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Beallithato pontok kozott mozgatja a platformot
 public class PlatformMover : MonoBehaviour
 {
     [SerializeField] Transform startPos;

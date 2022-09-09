@@ -1,5 +1,8 @@
 using UnityEngine;
 
+// Oldal iranyban mozgatja a Playert, amig levan nyomva az adott gomb, kulonben "lefagyasztja" a Playert
+// Ugrani is tud, adott gomb lenyomasakor, de csak akkor ha a Player collidere erintkezik a platformmal
+
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] KeyCode rightKey = KeyCode.D;

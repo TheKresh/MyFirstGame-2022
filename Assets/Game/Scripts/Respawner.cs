@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-// Akarhol is legyek akarmelyik mappon, ha lenyomtam az adott beallitott gombot, (egyelore meg csak) az adott beallitott pontra visszateleportal
-// game breaking bug hasznos lehet
+// Akarhol is legyek akarmelyik mappon, ha lenyomtam az adott beallitott gombot, (egyelore meg csak) egy beallitott pontra visszateleportal
 
 public class Respawner : MonoBehaviour
 {

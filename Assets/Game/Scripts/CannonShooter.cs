@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Ha a beallitott ertek nem nulla, akkor adott idokozonkent letrehoz egy lovedeket
+
 public class CannonShooter : MonoBehaviour
 {
     [SerializeField] Transform startPos;

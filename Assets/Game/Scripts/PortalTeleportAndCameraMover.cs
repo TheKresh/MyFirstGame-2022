@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 // Ha a Player erintkezik azzal az objet colliderevel amire ezt a scriptet rarakom es lenyomom a beallitott gombot, akkor teleportaljon a finishPoint-nak beallitott obj. poziciojahoz
-// Ha lenyomtam a teleport gombjat, akkor a kamera elindul es elkezd befordulni addig amig el nem eri ugyan azt a poziciot mint az elore beallitott transform
+// Ha lenyomtam a teleport gombjat, akkor a kamera elindul es elkezd befordulni addig, amig el nem eri ugyan azt a poziciot mint az elore beallitott pont GameObjective (cameraPos)
+// Kamera csak akkor mozoghat, ha aktiv az adott elerni kivant GameObject (cameraPos)
 
 public class PortalTeleportAndCameraMover : MonoBehaviour
 {
