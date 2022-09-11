@@ -13,6 +13,9 @@ public class CannonShooter : MonoBehaviour
     void Start()
     {
         timebetween = starttimebetween;
+
+        GameObject newBullet = Instantiate(bullet);
+        newBullet.transform.position = startPos.position;
     }
 
     void Update()

@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - Damager
   - Wall
+  - Heal
   layers:
   - Default
   - TransparentFX

@@ -17,7 +17,7 @@ public class PlayerMover : MonoBehaviour
     bool isJumping;
     string button;
 
-    void OnValidate()
+    void Start()
     {
         if (rigidBody == null)
             rigidBody = GetComponent<Rigidbody>();

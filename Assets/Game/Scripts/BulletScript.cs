@@ -12,6 +12,10 @@ public class BulletScript : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.velocity = transform.up * speed;
-        Destroy(gameObject, destroyTime);
+    }
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Player" || col.gameObject.tag == "Wall" || col.gameObject.tag == "Platform")
+            Destroy(gameObject);
     }
 }
