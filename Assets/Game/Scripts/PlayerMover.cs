@@ -17,6 +17,7 @@ public class PlayerMover : MonoBehaviour
     bool isJumping;
     string button;
 
+
     void Start()
     {
         if (rigidBody == null)

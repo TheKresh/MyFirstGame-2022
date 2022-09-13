@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (damager != null && health > 0)
         {
-            health -= Mathf.Min(damager.damage, health);
+            health = health - damager.damage;
             health = Mathf.Clamp(health, 0, maxHealth);
         }
 
