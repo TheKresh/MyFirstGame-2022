@@ -9,4 +9,9 @@ public class GameOverMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MyFirstGame");
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
