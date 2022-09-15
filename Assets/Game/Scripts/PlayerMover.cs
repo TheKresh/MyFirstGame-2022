@@ -26,6 +26,7 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
+        PlayerHealth playerHP = gameObject.GetComponentInChildren<PlayerHealth>();
 
         if (Input.GetKey(rightKey))
         {
@@ -48,6 +49,9 @@ public class PlayerMover : MonoBehaviour
         
         else
             button = null;
+
+        if (playerHP.health == 0)
+            gameObject.SetActive(false);
     }
     // valahogy megoldani hogy ne azonnal megalljon, hanem csak drasztikusan elkezdjen lelassulni
     void FixedUpdate()

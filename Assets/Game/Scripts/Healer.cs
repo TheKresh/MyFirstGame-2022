@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Healer : MonoBehaviour
 {
-    [SerializeField] public int heal = 1;
+    public int heal = 1;
 
     void OnTriggerEnter(Collider col)
     {
         PlayerHealth hp = col.gameObject.GetComponent<PlayerHealth>();
 
-        if (col.gameObject.tag == "Player" && hp.health < hp.maxHealth)
+        if (col.gameObject.tag == "Damagable" && hp.health < hp.maxHealth)
             Destroy(gameObject);
     }
 }
