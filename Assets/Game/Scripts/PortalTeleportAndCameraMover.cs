@@ -5,6 +5,8 @@ using UnityEngine;
 // Ha lenyomtam a teleport gombjat, akkor a kamera elindul es elkezd befordulni addig, amig el nem eri ugyan azt a poziciot mint az elore beallitott pont GameObjective (cameraPos).
 // Kamera csak akkor mozoghat, ha aktiv az adott elerni kivant GameObject (cameraPos).
 
+// Kamera elforgatas mukodik, viszont azt nem tudtam megoldani, hogy a player mozgasanak iranyai a kamera lokalis tengelyeitol fuggjon
+
 public class PortalTeleportAndCameraMover : MonoBehaviour
 {
     [SerializeField] KeyCode teleportButton;
@@ -14,7 +16,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] GameObject cameraPos;
     [SerializeField] float cameraMoveSpeed;
-    [SerializeField] float cameraRotationSpeed;
+    // [SerializeField] float cameraRotationSpeed;
 
     void Start()
     {
@@ -27,7 +29,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
         if (cameraPos.active == true)
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.fixedDeltaTime);
-            cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
+            // cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
         }
     }
 
