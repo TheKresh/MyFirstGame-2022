@@ -14,15 +14,15 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Light coreLight;
     [Space]
     [SerializeField] GameObject gameOverScreen;
-    // [SerializeField] TMP_Text uiHPText;
+    [SerializeField] TMP_Text uiHPText;
 
     float intensity;
     float speed = 1;
 
     void Start()
     {
-        /* if (uiHPText != null)
-            uiHPText.text = $"HP: {health}";*/
+        if (uiHPText != null)
+            uiHPText.text = $"HP: {health}";
 
         if (coreColor != null)
             coreColor = gameObject.GetComponent<Renderer>();
@@ -94,8 +94,8 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.tag == "Heal" && health < maxHealth)
             health = health + healer.heal;
 
-        /* if (uiHPText != null)
-            uiHPText.text = $"HP: {health}"; */
+        if (uiHPText != null)
+            uiHPText.text = $"HP: {health}";
 
         if (health == 0)
         {
