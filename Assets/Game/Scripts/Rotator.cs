@@ -8,6 +8,7 @@ public class Rotator : MonoBehaviour
 
     void Update()
     {
-        transform.eulerAngles += new Vector3(0, 1, 0) * rotateSpeed * Time.deltaTime;
+        // transform.eulerAngles += new Vector3(0, 1, 0) * rotateSpeed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 1, 0) * rotateSpeed, Space.Self);
     }
 }
