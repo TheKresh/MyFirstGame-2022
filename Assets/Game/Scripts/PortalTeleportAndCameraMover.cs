@@ -44,6 +44,9 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
     IEnumerator Teleport()
     {
+        // PlayerMover playerMover = gameObject.GetComponentInChildren<PlayerMover>();
+
+        // playerMover.enabled = false;
         player.isStatic = true;
         yield return new WaitForSeconds(0.1f);
         cameraPos.SetActive(true);
@@ -56,6 +59,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
             finishPoint.transform.position.z);
         yield return new WaitForSeconds(0.1f);
         player.isStatic = false;
+        // playerMover.enabled = true;
     }
 
     bool camPositionReached()

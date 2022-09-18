@@ -16,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     // [SerializeField] TMP_Text uiHPText;
 
+    float intensity;
     float speed = 1;
 
     void Start()
@@ -37,41 +38,44 @@ public class PlayerHealth : MonoBehaviour
 
     private void ColorChangeFromHP()
     {
-        Color blinkColorStart = new Color32(255, 0, 0, 255);
-        Color blinkColorEnd = new Color32(0, 0, 0, 255);
+        Color blinkColorStart = Color.red;
+        Color blinkColorEnd = Color.black;
+
+        intensity = 2;
 
         if (health == maxHealth)
         {
-            coreColor.material.color = new Color32(0, 255, 90, 255);
+            coreColor.material.SetColor("_EmissionColor", Color.green * intensity);
             coreLight.color = new Color32(0, 255, 90, 255);
         }
 
         if (health < maxHealth && health > 3)
         {
-            coreColor.material.color = new Color32(255, 255, 0, 255);
+            coreColor.material.SetColor("_EmissionColor", new Color(1,1,0) * intensity);
             coreLight.color = new Color32(255, 255, 0, 255);
         }
 
         if (health < 4 && health > 2)
         {
-            coreColor.material.color = new Color32(255, 150, 0, 255);
+            coreColor.material.SetColor("_EmissionColor", new Color(1, 0.5f, 0) * intensity);
             coreLight.color = new Color32(255, 150, 0, 255);
         }
 
         if (health < 3 && health > 1)
         {
-            coreColor.material.color = new Color32(255, 0, 0, 255);
+            coreColor.material.SetColor("_EmissionColor", Color.red * intensity);
             coreLight.color = new Color32(255, 0, 0, 255);
         }
 
         if (health == 1)
         {
-            coreColor.material.color = Color32.Lerp(blinkColorStart, blinkColorEnd, Mathf.PingPong(Time.time * speed, 1));
+            Color changeBetweenTwoColor = Color32.Lerp(blinkColorStart, blinkColorEnd, Mathf.PingPong(Time.time * speed, 1));
+            coreColor.material.SetColor("_EmissionColor", changeBetweenTwoColor * intensity);
             coreLight.color = Color32.Lerp(blinkColorStart, blinkColorEnd, Mathf.PingPong(Time.time * speed, 1));
         }
         if (health == 0)
         {
-            coreColor.material.color = new Color32(0, 0, 0, 255);
+            coreColor.material.SetColor("_EmissionColor", new Color(0, 0, 0));
             coreLight.enabled = false;
         }
     }
