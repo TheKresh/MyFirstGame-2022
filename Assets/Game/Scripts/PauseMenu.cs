@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] KeyCode pauseKey = KeyCode.Escape;
+    [SerializeField] KeyCode pauseKey = KeyCode.P;
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;

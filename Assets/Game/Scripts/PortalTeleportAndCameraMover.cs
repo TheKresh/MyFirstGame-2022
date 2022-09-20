@@ -16,7 +16,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] Transform cam;
     [SerializeField] GameObject cameraPos;
     [SerializeField] float cameraMoveSpeed;
-    [SerializeField] float cameraRotationSpeed;
+    // [SerializeField] float cameraRotationSpeed;
 
     void Start()
     {
@@ -24,12 +24,12 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if (cameraPos.active == true)
         {
-            cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.deltaTime);
-            cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.deltaTime);
+            cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.fixedDeltaTime);
+            // cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
         }
     }
 
@@ -61,7 +61,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
     bool camPositionReached()
     {
-        if (cam.transform.position == cameraPos.transform.position && cam.transform.rotation == cameraPos.transform.localRotation)
+        if (cam.transform.position == cameraPos.transform.position /* && cam.transform.rotation == cameraPos.transform.localRotation*/)
             return true;
         else
             return false;
