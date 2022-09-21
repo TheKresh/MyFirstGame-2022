@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class ShieldItem : MonoBehaviour
 {
+    [SerializeField] KeyCode pickUpButton = KeyCode.E;
+    [Space]
     [SerializeField] GameObject player;
     [SerializeField] GameObject shieldTextInControls;
     [SerializeField] GameObject PopUpMessage;
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        if(player)
+        if(player && Input.GetKey(pickUpButton))
         {
             shieldTextInControls.SetActive(true);
 
