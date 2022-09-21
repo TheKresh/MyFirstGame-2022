@@ -6,6 +6,7 @@ public class Shield : MonoBehaviour
 {
     [SerializeField] KeyCode shieldKey = KeyCode.F;
     [Space]
+    [SerializeField] Collider playersCoreCollider;
     [SerializeField] GameObject shieldItem;
     [SerializeField] GameObject shield;
 
@@ -17,10 +18,16 @@ public class Shield : MonoBehaviour
         else if (shieldItem == null)
         {
             if (Input.GetKeyDown(shieldKey))
+            {
+                playersCoreCollider.enabled = false;
                 shield.gameObject.SetActive(true);
+            }
 
             if (Input.GetKeyUp(shieldKey))
+            {
                 shield.gameObject.SetActive(false);
+                playersCoreCollider.enabled = true;
+            }
         }
     }
 }
