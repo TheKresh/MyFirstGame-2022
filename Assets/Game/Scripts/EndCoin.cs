@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EndCoin : MonoBehaviour
 {
+    [SerializeField] KeyCode pickUpButton = KeyCode.E;
+    [Space]
     [SerializeField] GameObject player;
     [SerializeField] GameObject uICanvas;
     [SerializeField] GameObject endScreen;
     
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        if(player)
+        if(player && Input.GetKey(pickUpButton))
         {
             player.gameObject.SetActive(false);
 
