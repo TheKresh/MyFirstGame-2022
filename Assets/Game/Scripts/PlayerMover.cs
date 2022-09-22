@@ -81,4 +81,20 @@ public class PlayerMover : MonoBehaviour
         if (collision.gameObject.tag == "Platform")
             isJumping = true;
     }
+
+    // Csabatol kapott segitseg script resz
+    // Player iranyai ennek a segitsegevel a kamera iranyaitol fogg fuggni
+    
+    /* [SerializeField] float speed = 10f;
+
+    void Update()
+    {
+        Vector3 right = Camera.main.transform.right;
+        Vector3 left = Camera.main.transform.right * -1;
+
+        if (Input.GetKey(KeyCode.RightArrow))
+            transform.Translate(right * speed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            transform.Translate(left * speed * Time.deltaTime);
+    } */
 }
