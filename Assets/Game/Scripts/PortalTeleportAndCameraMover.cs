@@ -17,10 +17,14 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] GameObject cameraPos;
     [SerializeField] float cameraMoveSpeed;
     // [SerializeField] float cameraRotationSpeed;
+    [Space]
+    [SerializeField] GameObject interactButtonImage;
 
     void Start()
     {
         cameraPos.SetActive(false);
+
+        interactButtonImage.SetActive(false);
     }
 
 
@@ -35,12 +39,20 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Player" && Input.GetKey(teleportButton))
+        if (player)
+            interactButtonImage.SetActive(true);
+
+        if (player && Input.GetKey(teleportButton))
         {
             StartCoroutine("Teleport");
         }
     }
 
+    void OnTriggerExit(Collider col)
+    {
+        if (player)
+            interactButtonImage.SetActive(false);
+    }
 
     IEnumerator Teleport()
     {

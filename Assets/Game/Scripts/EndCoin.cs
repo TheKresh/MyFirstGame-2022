@@ -9,10 +9,19 @@ public class EndCoin : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject uICanvas;
     [SerializeField] GameObject endScreen;
-    
+    [SerializeField] GameObject interactButtonImage;
+
+    void Start()
+    {
+        interactButtonImage.SetActive(false);
+    }
+
     void OnTriggerStay(Collider col)
     {
-        if(player && Input.GetKey(pickUpButton))
+        if (player)
+            interactButtonImage.SetActive(true);
+
+        if (player && Input.GetKey(pickUpButton))
         {
             player.gameObject.SetActive(false);
 
@@ -22,7 +31,15 @@ public class EndCoin : MonoBehaviour
             if (endScreen != null)
                 endScreen.SetActive(true);
 
+            interactButtonImage.SetActive(false);
+
             Destroy(gameObject);
         }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (player)
+            interactButtonImage.SetActive(false);
     }
 }

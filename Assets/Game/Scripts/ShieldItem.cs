@@ -9,9 +9,18 @@ public class ShieldItem : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] GameObject shieldTextInControls;
     [SerializeField] GameObject PopUpMessage;
+    [SerializeField] GameObject interactButtonImage;
+
+    void Start()
+    {
+        interactButtonImage.SetActive(false);
+    }
 
     void OnTriggerStay(Collider col)
     {
+        if (player)
+            interactButtonImage.SetActive(true);
+
         if(player && Input.GetKey(pickUpButton))
         {
             shieldTextInControls.SetActive(true);
@@ -19,7 +28,15 @@ public class ShieldItem : MonoBehaviour
             if (PopUpMessage != null)
                 PopUpMessage.SetActive(true);
 
+            interactButtonImage.SetActive(false);
+            
             Destroy(gameObject);
         }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (player)
+            interactButtonImage.SetActive(false);
     }
 }
