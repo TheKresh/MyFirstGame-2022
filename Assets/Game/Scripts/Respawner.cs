@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+// vegul ugy dontottem hogy nem hasznalom, helyette restart scriptet csinaltam
+
 // Akarhol is legyek akarmelyik mappon, ha lenyomtam az adott beallitott gombot, (egyelore meg csak) egy beallitott pontra visszateleportal
 
 public class Respawner : MonoBehaviour

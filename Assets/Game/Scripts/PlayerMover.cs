@@ -53,7 +53,6 @@ public class PlayerMover : MonoBehaviour
         if (playerHP.health == 0)
             gameObject.SetActive(false);
     }
-    // valahogy megoldani hogy ne azonnal megalljon, hanem csak drasztikusan elkezdjen lelassulni
     void FixedUpdate()
     {
         rigidBody.freezeRotation = false;
@@ -83,14 +82,14 @@ public class PlayerMover : MonoBehaviour
     }
 
     // Csabatol kapott segitseg script resz
-    // Player iranyai ennek a segitsegevel a kamera iranyaitol fogg fuggni
+    // Player iranyai ennek a segitsegevel a kamera iranyaitol fog fuggni
     
     /* [SerializeField] float speed = 10f;
 
     void Update()
     {
         Vector3 right = Camera.main.transform.right;
-        Vector3 left = Camera.main.transform.right * -1;
+        Vector3 left = right * -1;
 
         if (Input.GetKey(KeyCode.RightArrow))
             transform.Translate(right * speed * Time.deltaTime);

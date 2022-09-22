@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Beallithato pontok kozott mozgatja a platformot
-public class PlatformMover : MonoBehaviour
+
+public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] Transform startPos;
     [SerializeField] Transform platformPos1;
     [SerializeField] Transform platformPos2;
-    [SerializeField] float speed;
+    [SerializeField] float velocity;
+    [SerializeField] Rigidbody rigidBody;
 
     Vector3 moveTo;
 
@@ -19,12 +21,12 @@ public class PlatformMover : MonoBehaviour
 
     void Update()
     {
-        if (transform.position == platformPos1.position)
+        if (rigidBody.position == platformPos1.position)
             moveTo = platformPos2.position;
-        if (transform.position == platformPos2.position)
+        if (rigidBody.position == platformPos2.position)
             moveTo = platformPos1.position;
 
-        transform.position = Vector3.MoveTowards(transform.position, moveTo, speed * Time.deltaTime);
+        rigidBody.position = Vector3.MoveTowards(rigidBody.position, moveTo, velocity * Time.deltaTime);
     }
 
     void OnDrawGizmos()
