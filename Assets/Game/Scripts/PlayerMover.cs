@@ -10,7 +10,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [Space]
     [SerializeField] float moveSpeed = 2f;
-    [SerializeField] float jumpForce = 60f;     
+    [SerializeField] float jumpForce = 60f;
     [Space]
     [SerializeField] Rigidbody rigidBody;
 
@@ -26,6 +26,7 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
+
         PlayerHealth playerHP = gameObject.GetComponentInChildren<PlayerHealth>();
 
         if (Input.GetKey(rightKey))
@@ -46,35 +47,47 @@ public class PlayerMover : MonoBehaviour
 
         else if (Input.GetKey(jumpKey))
             button = "jump";
-        
+
         else
             button = null;
 
         if (playerHP.health == 0)
             gameObject.SetActive(false);
     }
+
     void FixedUpdate()
     {
+        Vector3 right = Camera.main.transform.right;
+        Vector3 left = right * -1;
+
+        // Rotation lockkal oldom meg, hogy lelassuljon a Player_Ball, ha egyik iranyba sincs mozgatva
         rigidBody.freezeRotation = false;
 
         if (button == "right")
-            rigidBody.AddForce (new Vector3(moveSpeed, 0f, 0f), ForceMode.Impulse);
-        
+            rigidBody.AddForce(right * moveSpeed, ForceMode.Impulse);
+
         else if (button == "left")
-            rigidBody.AddForce(new Vector3(-moveSpeed, 0f, 0f), ForceMode.Impulse);
-        
+            rigidBody.AddForce(left * moveSpeed, ForceMode.Impulse);
+
         else if (!isJumping && button == "jump")
-            rigidBody.AddForce (new Vector3(0f, jumpForce, 0f), ForceMode.Impulse);
-        
+            rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+
         else
             rigidBody.freezeRotation = true;
     }
 
-    void OnTriggerEnter(Collider collision)
+    /* void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Platform")
+            isJumping = false;
+    } */
+
+    void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.tag == "Platform")
             isJumping = false;
     }
+
     void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Platform")
@@ -83,13 +96,13 @@ public class PlayerMover : MonoBehaviour
 
     // Csabatol kapott segitseg script resz
     // Player iranyai ennek a segitsegevel a kamera iranyaitol fog fuggni
-    
+
     /* [SerializeField] float speed = 10f;
 
     void Update()
     {
         Vector3 right = Camera.main.transform.right;
-        Vector3 left = right * -1;
+        Vector3 left = Camera.main.transform.right * -1; // vagy siman csak right a "Camera.main.transform.right" helyett, mert felette már meglett hatarozva, hogy mi a "right"
 
         if (Input.GetKey(KeyCode.RightArrow))
             transform.Translate(right * speed * Time.deltaTime);

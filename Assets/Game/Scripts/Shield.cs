@@ -10,6 +10,11 @@ public class Shield : MonoBehaviour
     [SerializeField] GameObject shieldItem;
     [SerializeField] GameObject shield;
 
+    void Start()
+    {
+        shield.SetActive(false);
+    }
+
     void Update()
     {
         if (shieldItem != null)
@@ -20,12 +25,12 @@ public class Shield : MonoBehaviour
             if (Input.GetKeyDown(shieldKey))
             {
                 playersCoreCollider.enabled = false;
-                shield.gameObject.SetActive(true);
+                shield.SetActive(true);
             }
 
             if (Input.GetKeyUp(shieldKey))
             {
-                shield.gameObject.SetActive(false);
+                shield.SetActive(false);
                 playersCoreCollider.enabled = true;
             }
         }

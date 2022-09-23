@@ -9,6 +9,6 @@ public class PortalRotator : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, 1) * rotateSpeed, Space.World);
+        transform.Rotate(new Vector3(0, 0, 1) * rotateSpeed, Space.Self);
     }
 }
