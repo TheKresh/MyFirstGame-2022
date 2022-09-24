@@ -57,8 +57,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (health < 4 && health > 2)
         {
-            coreColor.material.SetColor("_EmissionColor", new Color(1, 0.5f, 0) * intensity);
-            coreLight.color = new Color32(255, 150, 0, 255);
+            coreColor.material.SetColor("_EmissionColor", new Color(1, 0.3f, 0) * intensity);
+            coreLight.color = new Color32(255, 130, 0, 255);
         }
 
         if (health < 3 && health > 1)

@@ -1,15 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
-// Ha a Player erintkezik azzal az objet colliderevel amire ezt a scriptet rarakom es lenyomom a beallitott gombot, akkor teleportaljon a finishPoint-nak beallitott obj. poziciojahoz.
-// Ha lenyomtam a teleport gombjat, akkor a kamera elindul es elkezd befordulni addig, amig el nem eri ugyan azt a poziciot mint az elore beallitott pont GameObjective (cameraPos).
-// Kamera csak akkor mozoghat, ha aktiv az adott elerni kivant GameObject (cameraPos).
-
-// Kamera elforgatas mukodik, viszont azt nem tudtam megoldani, hogy a player mozgasanak iranyai a kamera lokalis tengelyeitol fuggjon
+// Ha a Player erintkezik a Teleport colliderevel, megjelenik az interact gomb keppel kifejezve, ha azt a gombot hosszan lenyomom es betelik a kep,
+// akkor aktiv lesz a kovetkezo mapphoz beallitott CameraPos es addig mozog a kamera amig el nem eri azt a poziciot mint  a CameraPos.
+// Amikor a kamera elindul teljes mertekben kikapcsolja a Playert, ha a kamera elerte a beallitott poziciot akkor utana visszakapcsolja.
 
 public class PortalTeleportAndCameraMover : MonoBehaviour
 {
-    [SerializeField] KeyCode teleportButton = KeyCode.E;
+    [SerializeField] KeyCode interactButton = KeyCode.E;
     [SerializeField] GameObject player;
     [SerializeField] Transform finishPoint;
     [Space]
@@ -19,6 +18,10 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [SerializeField] float cameraRotationSpeed;
     [Space]
     [SerializeField] GameObject interactButtonImage;
+    [SerializeField] Image interactButtonFillImage;
+
+    bool isHoldingDown;
+    bool interactButtonIsFilled;
 
     void Start()
     {
@@ -27,10 +30,15 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
         interactButtonImage.SetActive(false);
     }
 
+    void Update()
+    {
+        HoldButtonPress();
+    }
+
 
     void FixedUpdate()
     {
-        if (cameraPos.active == true)
+        if (cameraPos.activeInHierarchy == true)
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.fixedDeltaTime);
             cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);
@@ -42,7 +50,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
         if (player)
             interactButtonImage.SetActive(true);
 
-        if (player && Input.GetKey(teleportButton))
+        if (player && interactButtonIsFilled == true)
         {
             StartCoroutine("Teleport");
         }
@@ -51,12 +59,15 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     void OnTriggerExit(Collider col)
     {
         if (player)
+        {
             interactButtonImage.SetActive(false);
+        }
     }
 
     IEnumerator Teleport()
     {
-        
+        interactButtonImage.SetActive(false);
+        interactButtonIsFilled = false;
         player.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         cameraPos.SetActive(true);
@@ -70,12 +81,43 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         player.gameObject.SetActive(true);
     }
-
+    
     bool camPositionReached()
     {
         if (cam.transform.position == cameraPos.transform.position && cam.transform.rotation == cameraPos.transform.localRotation)
             return true;
         else
             return false;
+    }
+    
+    void HoldButtonPress()
+    {
+        if (interactButtonFillImage.isActiveAndEnabled && Input.GetKey(interactButton))
+        {
+            isHoldingDown = true;
+
+            if (isHoldingDown == true)
+            {
+                interactButtonFillImage.fillAmount += 0.7f * Time.deltaTime;
+
+                if (interactButtonFillImage.fillAmount == 1f)
+                {
+                    interactButtonIsFilled = true;
+                }
+                
+                else
+                    interactButtonIsFilled = false;
+            }
+        }
+        else
+            isHoldingDown = false;
+
+        if (isHoldingDown == false)
+        {
+            interactButtonFillImage.fillAmount -= 1.5f * Time.deltaTime;
+            
+            if (interactButtonFillImage.fillAmount == 0f)
+                return;
+        }
     }
 }

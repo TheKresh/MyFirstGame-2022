@@ -1,7 +1,8 @@
 using UnityEngine;
 
-// Oldal iranyban mozgatja a Playert, amig levan nyomva az adott gomb, kulonben "lefagyasztja" a Playert
-// Ugrani is tud, adott gomb lenyomasakor, de csak akkor ha a Player collidere erintkezik a platformmal
+// Oldal iranyban mozgatja a Playert, amig levan nyomva az adott gomb, kulonben "lefagyasztja" a Playert.
+// Ugrani is tud, adott gomb lenyomasakor, de csak akkor ha a Player collidere erintkezik a "Platform" taggel ellatott GameObjecttel.
+// A Player jobb es bal iranyai, a kamera jobb es bal iranyaitol fugg 
 
 public class PlayerMover : MonoBehaviour
 {
@@ -76,12 +77,6 @@ public class PlayerMover : MonoBehaviour
             rigidBody.freezeRotation = true;
     }
 
-    /* void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Platform")
-            isJumping = false;
-    } */
-
     void OnTriggerStay(Collider collision)
     {
         if (collision.gameObject.tag == "Platform")
@@ -96,9 +91,7 @@ public class PlayerMover : MonoBehaviour
 
     // Csabatol kapott segitseg script resz
     // Player iranyai ennek a segitsegevel a kamera iranyaitol fog fuggni
-
-    /* [SerializeField] float speed = 10f;
-
+    /*  
     void Update()
     {
         Vector3 right = Camera.main.transform.right;
@@ -108,5 +101,6 @@ public class PlayerMover : MonoBehaviour
             transform.Translate(right * speed * Time.deltaTime);
         if (Input.GetKey(KeyCode.LeftArrow))
             transform.Translate(left * speed * Time.deltaTime);
-    } */
+    } 
+    */
 }

@@ -10,7 +10,7 @@ public class PopUpMessages : MonoBehaviour
 
     void Update()
     {
-        if ((popUpMessage.active && Input.GetKey(oKButton)) || (popUpMessage.active && Input.GetKey(closeButton)))
+        if ((popUpMessage.activeInHierarchy && Input.GetKey(oKButton)) || (popUpMessage.activeInHierarchy && Input.GetKey(closeButton)))
             popUpMessage.SetActive(false);
     }
 }
