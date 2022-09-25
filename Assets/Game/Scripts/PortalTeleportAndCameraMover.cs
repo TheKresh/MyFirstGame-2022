@@ -19,6 +19,9 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
     [Space]
     [SerializeField] GameObject interactButtonImage;
     [SerializeField] Image interactButtonFillImage;
+    [Space]
+    [SerializeField] float chargeTime = 0.7f;
+    [SerializeField] float cooldownTime = 1.5f;
 
     bool isHoldingDown;
     bool interactButtonIsFilled;
@@ -98,7 +101,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
             if (isHoldingDown == true)
             {
-                interactButtonFillImage.fillAmount += 0.7f * Time.deltaTime;
+                interactButtonFillImage.fillAmount += chargeTime * Time.deltaTime;
 
                 if (interactButtonFillImage.fillAmount == 1f)
                 {
@@ -114,7 +117,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
         if (isHoldingDown == false)
         {
-            interactButtonFillImage.fillAmount -= 1.5f * Time.deltaTime;
+            interactButtonFillImage.fillAmount -= cooldownTime * Time.deltaTime;
             
             if (interactButtonFillImage.fillAmount == 0f)
                 return;
