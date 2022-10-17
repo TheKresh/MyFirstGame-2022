@@ -41,7 +41,7 @@ public class PortalTeleportAndCameraMover : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (cameraPos.activeInHierarchy == true)
+        if (cameraPos.activeInHierarchy)
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.fixedDeltaTime);
             cam.transform.rotation = Quaternion.RotateTowards(cam.transform.rotation, cameraPos.transform.localRotation, cameraRotationSpeed * Time.fixedDeltaTime);

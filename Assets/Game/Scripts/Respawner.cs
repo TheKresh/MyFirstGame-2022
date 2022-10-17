@@ -22,7 +22,7 @@ public class Respawner : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (cameraPos.activeInHierarchy == true)
+        if (cameraPos.activeInHierarchy)
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, cameraPos.transform.position, cameraMoveSpeed * Time.fixedDeltaTime);
         }

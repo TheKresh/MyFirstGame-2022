@@ -16,8 +16,6 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] Rigidbody rigidBody;
 
     bool isJumping;
-    string button;
-
 
     void Start()
     {
@@ -27,30 +25,13 @@ public class PlayerMover : MonoBehaviour
 
     void Update()
     {
-
+        
         PlayerHealth playerHP = gameObject.GetComponentInChildren<PlayerHealth>();
-
-        if (Input.GetKey(rightKey))
-        {
-            button = "right";
-
-            if (Input.GetKey(jumpKey))
-                button = "jump";
-        }
-
-        else if (Input.GetKey(leftKey))
-        {
-            button = "left";
-
-            if (Input.GetKey(jumpKey))
-                button = "jump";
-        }
-
-        else if (Input.GetKey(jumpKey))
-            button = "jump";
-
-        else
-            button = null;
+        
+        // Rotation lockkal oldom meg, hogy lelassuljon a Player_Ball, ha egyik iranyba sincs mozgatva
+        rigidBody.freezeRotation = false;
+        if (!Input.GetKey(rightKey) && !Input.GetKey(leftKey) && !Input.GetKey(jumpKey))
+            rigidBody.freezeRotation = true;
 
         if (playerHP.health == 0)
             gameObject.SetActive(false);
@@ -60,21 +41,16 @@ public class PlayerMover : MonoBehaviour
     {
         Vector3 right = Camera.main.transform.right;
         Vector3 left = right * -1;
+        
+        // elvileg ForceMode.Impluse helyett ForceMode.Acceleration jobb lenne
+        if (Input.GetKey(rightKey))
+            rigidBody.AddForce(right * moveSpeed, ForceMode.Acceleration);
 
-        // Rotation lockkal oldom meg, hogy lelassuljon a Player_Ball, ha egyik iranyba sincs mozgatva
-        rigidBody.freezeRotation = false;
+        if (Input.GetKey(leftKey))
+            rigidBody.AddForce(left * moveSpeed, ForceMode.Acceleration);
 
-        if (button == "right")
-            rigidBody.AddForce(right * moveSpeed, ForceMode.Impulse);
-
-        else if (button == "left")
-            rigidBody.AddForce(left * moveSpeed, ForceMode.Impulse);
-
-        else if (!isJumping && button == "jump")
-            rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
-
-        else
-            rigidBody.freezeRotation = true;
+        if (!isJumping && Input.GetKey(jumpKey))
+            rigidBody.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Acceleration);
     }
 
     void OnTriggerStay(Collider collision)
